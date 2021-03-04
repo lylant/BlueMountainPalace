@@ -30,7 +30,9 @@ namespace BlueMountainPalace
             // Use SQLite as the DB Provider for the project: BlueMountainPalace.db
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlite("Data Source = BlueMountainPalace.db"));
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+
+            // Disable the email confirmation feature
+            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddRazorPages();
         }
