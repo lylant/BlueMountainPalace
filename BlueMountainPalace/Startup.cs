@@ -31,9 +31,11 @@ namespace BlueMountainPalace
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlite("Data Source = BlueMountainPalace.db"));
 
-            // Disable the email confirmation feature
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+            // Add the Identity service with roles enabled
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultUI()
+                .AddDefaultTokenProviders();
             services.AddRazorPages();
         }
 
