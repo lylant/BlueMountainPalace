@@ -69,3 +69,46 @@ body {
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
 }
+
+/* Home Page Carousel Styles
+-------------------------------------------------- */
+
+#HotelCarousel {
+    height: 100%;
+    width: 100%;
+}
+
+.carousel-indicators {
+    margin-bottom: 8px;
+}
+
+.carousel-indicators > li {
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+}
+
+.carousel-inner {
+    border: 1px ridge #eee;
+    border-radius: 15%;
+    height: 100%;
+}
+
+.carousel-item {
+    text-align: center;
+}
+
+.carousel-item img {
+    display: block;
+    margin: auto;
+}
+
+.carousel-caption {
+    background-color: #000;
+    opacity: 0.65;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: invert(10%);
+}
