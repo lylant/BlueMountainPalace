@@ -7,14 +7,8 @@ using System.Threading.Tasks;
 
 namespace BlueMountainPalace.Models
 {
-    public class Customer
+    public class CustomerView
     {
-        [Key] // Primary Key
-        [Required]
-        [DataType(DataType.EmailAddress)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public string Email { get; set; }
-
         [Required]
         [MinLength(2), MaxLength(20)]
         // RegEx: must start with a capital letter, then allows lower-case letters, apostrophe or hyphen
@@ -35,8 +29,5 @@ namespace BlueMountainPalace.Models
         // RegEx: only numeric characters are allowed
         [RegularExpression(@"^[0-9]*$")]
         public string Postcode { get; set; }
-
-        // Navigation Properties
-        public ICollection<Booking> TheBookings { get; set; }
     }
 }
