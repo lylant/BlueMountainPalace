@@ -1,0 +1,69 @@
+﻿@page
+@model BlueMountainPalace.Pages.Bookings.BookingModel
+
+@{
+    ViewData["Title"] = "Blue Mountain Palace | Book a Room";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Book a Room</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="BookingInput.RoomID" class="control-label"></label>
+                <select asp-for="BookingInput.RoomID" class="form-control" asp-items="ViewBag.RoomSelection"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="BookingInput.CheckIn" class="control-label"></label>
+                <input asp-for="BookingInput.CheckIn" class="form-control" />
+                <span asp-validation-for="BookingInput.CheckIn" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BookingInput.CheckOut" class="control-label"></label>
+                <input asp-for="BookingInput.CheckOut" class="form-control" />
+                <span asp-validation-for="BookingInput.CheckOut" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Booking" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@* Result Section *@
+@if (ViewData["ValidBooking"] != null)
+{
+    <hr />
+    if ((string)ViewData["ValidBooking"] == "true")
+    {
+        <h5>You have successfully booked your room.</h5>
+
+        <ul>
+            <li>Room ID: <strong>@Model.BookingInput.RoomID</strong></li>
+            <li>Room Level: <strong>@ViewBag.RoomLevel</strong></li>
+            <li>Check In: <strong>@String.Format("{0:dd/MM/yyyy}", Model.BookingInput.CheckIn)</strong></li>
+            <li>Check Out: <strong>@String.Format("{0:dd/MM/yyyy}", Model.BookingInput.CheckOut)</strong></li>
+            <li>Amount Due: $ <strong>@ViewBag.AmountDue</strong></li>
+        </ul>
+
+        <br />
+    }
+    else
+    {
+        <h5>The room is unavailable with your conditions.</h5>
+
+        <br />
+    }
+}
+
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
