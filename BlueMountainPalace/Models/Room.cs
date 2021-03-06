@@ -9,6 +9,7 @@ namespace BlueMountainPalace.Models
     public class Room
     {
         // Primary Key
+        [Display(Name = "Room ID")]
         public int ID { get; set; }
 
         [Required]
@@ -17,6 +18,7 @@ namespace BlueMountainPalace.Models
         [RegularExpression(@"^[G1-3]$")]
         public string Level { get; set; }
 
+        [Display(Name = "Number of Beds")]
         [Range(1, 3)]
         public int BedCount { get; set; }
 
