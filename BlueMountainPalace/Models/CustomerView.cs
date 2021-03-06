@@ -21,7 +21,7 @@ namespace BlueMountainPalace.Models
         [RegularExpression(@"^[A-Z][a-z'-]*$")]
         public string FirstName { get; set; }
 
-        [NotMapped] // not mapping this property to the database, but will exist in memory
+        [NotMapped] // not to map this property to the database
         public string FullName => $"{LastName} {FirstName}";
 
         [Required]
