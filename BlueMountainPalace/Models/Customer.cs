@@ -27,6 +27,9 @@ namespace BlueMountainPalace.Models
         [RegularExpression(@"^[A-Z][a-z'-]*$")]
         public string FirstName { get; set; }
 
+        [NotMapped] // not to map this property to the database
+        public string FullName => $"{LastName} {FirstName}";
+
         [Required]
         [MinLength(4), MaxLength(4)]
         // RegEx: only numeric characters are allowed
