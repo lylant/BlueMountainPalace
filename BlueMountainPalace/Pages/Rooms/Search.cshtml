@@ -1,4 +1,94 @@
 ﻿@page
 @model BlueMountainPalace.Pages.Rooms.SearchModel
+
 @{
+    ViewData["Title"] = "Blue Mountain Palace | Search Rooms";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Search Rooms</h1>
+
+<br />
+
+<!-- Search Form -->
+<form class="form-inline" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="SearchInput.BedCount" class="control-label">Number of Beds: &nbsp;</label>
+        <select asp-for="SearchInput.BedCount" class="form-control" asp-items="ViewBag.BedSelection"></select>
+    </div>
+    <div>
+        &nbsp; &nbsp; @* introducing two spaces *@
+    </div>
+    <div class="form-group">
+        <label asp-for="SearchInput.CheckIn" class="control-label">Check-in Date: &nbsp;</label>
+        <input asp-for="SearchInput.CheckIn" class="form-control" />
+        <span asp-validation-for="SearchInput.CheckIn" class="text-danger"></span>
+    </div>
+    <div>
+        &nbsp; &nbsp; @* introducing two spaces *@
+    </div>
+    <div class="form-group">
+        <label asp-for="SearchInput.CheckOut" class="control-label">Check-out Date: &nbsp;</label>
+        <input asp-for="SearchInput.CheckOut" class="form-control" />
+        <span asp-validation-for="SearchInput.CheckOut" class="text-danger"></span>
+    </div>
+    <div>
+        &nbsp; &nbsp; @* introducing two spaces *@
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Search" class="btn btn-primary" />
+    </div>
+</form>
+
+@* Result Section *@
+@if (ViewData["ValidResult"] != null)
+{
+    <hr />
+    if ((string)ViewData["ValidResult"] == "true")
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Rooms[0].ID)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Rooms[0].Level)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Rooms[0].BedCount)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Rooms[0].Price)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Rooms)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ID)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Level)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.BedCount)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Price)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <h5>No available room with your search conditions.</h5>
+    }
+
+
 }
