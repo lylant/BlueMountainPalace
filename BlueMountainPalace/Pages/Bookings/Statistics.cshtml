@@ -1,0 +1,67 @@
+﻿@page
+@model BlueMountainPalace.Pages.Bookings.StatisticsModel
+@{
+    ViewData["Title"] = "Blue Mountain Palace | Statistics Report";
+}
+
+<h1>Statistics Report</h1>
+<hr />
+
+<h3>Customer Distribution with Respect to Postcodes</h3>
+<br />
+
+<div>
+    @* .table is a Bootstrap class giving table styles *@
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(p => p.CustomerStats[0].Postcode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(p => p.CustomerStats[0].CustomerCount)
+            </th>
+        </tr>
+
+        @foreach (var item in Model.CustomerStats)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Postcode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CustomerCount)
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+<br />
+
+<h3>Booking Distribution with Respect to Rooms</h3>
+<br />
+
+<div>
+    @* .table is a Bootstrap class giving table styles *@
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(p => p.RoomBookingStats[0].RoomID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(p => p.RoomBookingStats[0].BookingCount)
+            </th>
+        </tr>
+
+        @foreach (var item in Model.RoomBookingStats)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RoomID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BookingCount)
+                </td>
+            </tr>
+        }
+    </table>
+</div>
