@@ -22,9 +22,32 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
-                        </li>
+                        @if (User.IsInRole("Customer"))
+                        // Customer Menus
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Customers/MyDetails">My Details</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Rooms/Search">Search Rooms</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Bookings/Booking">Book A Room</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Bookings/MyBooking">My Bookings</a>
+                            </li>
+                        }
+                        @if (User.IsInRole("Administrator"))
+                        // Admin Menus
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Bookings/Manage">Manage Bookings</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Bookings/Statistics">Statistics</a>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>
