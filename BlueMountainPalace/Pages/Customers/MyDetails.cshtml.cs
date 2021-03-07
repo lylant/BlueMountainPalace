@@ -13,11 +13,11 @@ using Microsoft.AspNetCore.Authorization;
 namespace BlueMountainPalace.Pages.Customers
 {
     [Authorize(Roles = "Customer")] // Only logged-in customer can access this page
-    public class DetailsModel : PageModel
+    public class MyDetailsModel : PageModel
     {
         private readonly BlueMountainPalace.Data.ApplicationDbContext _context;
 
-        public DetailsModel(BlueMountainPalace.Data.ApplicationDbContext context)
+        public MyDetailsModel(BlueMountainPalace.Data.ApplicationDbContext context)
         {
             _context = context;
         }
