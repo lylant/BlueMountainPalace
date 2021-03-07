@@ -1,4 +1,78 @@
 ﻿@page
 @model BlueMountainPalace.Pages.Bookings.CreateModel
 @{
+    ViewData["Title"] = "Three Sisters Hotel | Create a Booking";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Create a Booking</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="BookingInput.RoomID" class="control-label"></label>
+                <input asp-for="BookingInput.RoomID" class="form-control" />
+                <span asp-validation-for="BookingInput.RoomID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BookingInput.CustomerEmail" class="control-label"></label>
+                <select asp-for="BookingInput.CustomerEmail" class="form-control" asp-items="ViewBag.CustomerSelection"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="BookingInput.CheckIn" class="control-label"></label>
+                <input asp-for="BookingInput.CheckIn" class="form-control" />
+                <span asp-validation-for="BookingInput.CheckIn" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BookingInput.CheckOut" class="control-label"></label>
+                <input asp-for="BookingInput.CheckOut" class="form-control" />
+                <span asp-validation-for="BookingInput.CheckOut" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BookingInput.Cost" class="control-label"></label>
+                <input asp-for="BookingInput.Cost" class="form-control" />
+                <span asp-validation-for="BookingInput.Cost" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Booking" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@* Result Section *@
+@if (ViewData["ValidBooking"] != null)
+{
+    <hr />
+    if ((string)ViewData["ValidBooking"] == "true")
+    {
+        <h5>You have successfully created a booking.</h5>
+
+        <ul>
+            <li>Room ID: <strong>@Model.BookingInput.RoomID</strong></li>
+            <li>Customer: <strong>@ViewBag.CustomerName</strong></li>
+            <li>Check In: <strong>@Model.BookingInput.CheckIn</strong></li>
+            <li>Check Out: <strong>@Model.BookingInput.CheckOut</strong></li>
+            <li>Amount Due: $ <strong>@Model.BookingInput.Cost</strong></li>
+        </ul>
+
+        <br />
+    }
+    else
+    {
+        <h5>The room is unavailable with your conditions.</h5>
+
+        <br />
+    }
+}
+
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
