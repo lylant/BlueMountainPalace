@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using BlueMountainPalace.Models;
 
-namespace ThreeSistersHotel.Pages.Bookings
+namespace BlueMountainPalace.Pages.Bookings
 {
     [Authorize(Roles = "Administrator")] // Only logged-in admin can access this page
     public class ManageModel : PageModel
