@@ -15,12 +15,14 @@ namespace BlueMountainPalace.Models
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public string Email { get; set; }
 
+        [Display(Name = "Surname")]
         [Required]
         [MinLength(2), MaxLength(20)]
         // RegEx: must start with a capital letter, then allows lower-case letters, apostrophe or hyphen
         [RegularExpression(@"^[A-Z][a-z'-]*$")]
         public string LastName { get; set; }
 
+        [Display(Name = "Given Name")]
         [Required]
         [MinLength(2), MaxLength(20)]
         // RegEx: must start with a capital letter, then allows lower-case letters, apostrophe or hyphen

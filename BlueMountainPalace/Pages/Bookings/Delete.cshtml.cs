@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +11,7 @@ using BlueMountainPalace.Models;
 
 namespace BlueMountainPalace.Pages.Bookings
 {
+    [Authorize(Roles = "Administrator")] // Only logged-in admin can access this page
     public class DeleteModel : PageModel
     {
         private readonly BlueMountainPalace.Data.ApplicationDbContext _context;
@@ -55,7 +57,7 @@ namespace BlueMountainPalace.Pages.Bookings
                 await _context.SaveChangesAsync();
             }
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("./Manage");
         }
     }
 }

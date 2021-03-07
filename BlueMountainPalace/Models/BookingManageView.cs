@@ -6,35 +6,31 @@ using System.Threading.Tasks;
 
 namespace BlueMountainPalace.Models
 {
-    public class Booking
+    public class BookingManageView
     {
-        // Primary Key
-        public int ID { get; set; }
-
-        // Foreign Key
+        [Required]
+        [Range(1, 16)]
         public int RoomID { get; set; }
 
-        // Foreign Key
+        [Required]
+        [Display(Name = "Customer")]
         [DataType(DataType.EmailAddress)]
         public string CustomerEmail { get; set; }
 
-        [Display(Name = "Check-In Date")]
+        [Required]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime CheckIn { get; set; }
 
-        [Display(Name = "Check-Out Date")]
+        [Required]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime CheckOut { get; set; }
 
+        [Required]
         [Display(Name = "Amount Due")]
         [DataType(DataType.Currency)]
         public decimal Cost { get; set; }
-
-
-        // Navigation Properies
-        public Room TheRoom { get; set; }
-        public Customer TheCustomer { get; set; }
     }
+
 }
