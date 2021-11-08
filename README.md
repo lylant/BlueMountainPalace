@@ -27,7 +27,7 @@ The project aims to build a website for the imaginary **Blue Mountain Palace** t
 ### Entity-Relationship Diagram
 
 <p align="center">
-    <img src="/_miscs/architecture_erd.PNG">
+    <img src="/_miscs/architecture_erd.png">
 </p>
 
 
