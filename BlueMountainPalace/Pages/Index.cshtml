@@ -1,0 +1,88 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Blue Mountain Palace";
+}
+
+<!-- Link the stylesheet (see https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification/) -->
+<environment include="Development">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</environment>
+
+
+<div id="HotelCarousel" class="carousel slide" data-ride="carousel" data-interval="4000">
+
+    <!-- Indicators -->
+    <ul class="carousel-indicators">
+        <li data-target="#HotelCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#HotelCarousel" data-slide-to="1"></li>
+        <li data-target="#HotelCarousel" data-slide-to="2"></li>
+        <li data-target="#HotelCarousel" data-slide-to="3"></li>
+    </ul>
+
+    <!-- the Slideshow -->
+    <div class="carousel-inner">
+
+        <div class="carousel-item active">
+            <img src="~/images/home_carousel_breakfast.jpg" alt="Breakfast Service" />
+            <div class="carousel-caption">
+                <p>Enjoy a weekend getaway in the Blue Mountains...</p>
+            </div>
+        </div>
+
+        <div class="carousel-item">
+            <img src="~/images/home_carousel_dining.jpg" alt="Dining Service" />
+            <div class="carousel-caption">
+                <p>We offer a diverse full-course menu with comfort food specials,</p>
+            </div>
+        </div>
+
+        <div class="carousel-item">
+            <img src="~/images/home_carousel_bedroom.jpg" alt="Bedroom Service" />
+            <div class="carousel-caption">
+                <p>And a selection of one, two, and three-bed spacious suites with complete facilities!</p>
+            </div>
+        </div>
+
+        <div class="carousel-item">
+            <img src="~/images/home_carousel_safety.jpg" alt="Safety Service" />
+            <div class="carousel-caption">
+                <p>We value your health and safety. Help us keep our premises COVID-free!</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Slide Controller -->
+    <a class="carousel-control-prev" href="#HotelCarousel" data-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next" href="#HotelCarousel" data-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </a>
+</div>
+
+<br />
+
+<div class="row">
+    <div class="col-md-8">
+        <h5>Welcome to Blue Mountain Palace!</h5>
+        <p>
+            We are a newly established hotel and accommodation central
+            in the Blue Mountains area. We hope you enjoy your stay.
+        </p>
+        <p>
+            Our hotel operates with sustainable safety measures against COVID-19.
+            Please assist us in keeping our staff and other patrons safe during your stay.
+        </p>
+    </div>
+    <div class="col-md-4">
+        <h5 class="text-center">External Links</h5>
+        <ul>
+            <li><a href="http://www.bom.gov.au/nsw/forecasts/katoomba.shtml">Katoomba Weather</a></li>
+            <li><a href="https://www.bmcc.nsw.gov.au">Blue Mountains City Council</a></li>
+            <li><a href="https://sydneyexpert.com/how-to-visit-the-blue-mountains">Blue Mountains Guide</a></li>
+        </ul>
+    </div>
+</div>

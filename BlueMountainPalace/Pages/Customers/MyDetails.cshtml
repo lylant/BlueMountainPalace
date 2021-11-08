@@ -1,0 +1,69 @@
+﻿@page
+@model BlueMountainPalace.Pages.Customers.MyDetailsModel
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<IdentityUser> UserManager
+
+@{
+    ViewData["Title"] = "Blue Mountain Palace | My Details";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<!-- Header -->
+<h1>My Details</h1>
+<h4>Welcome, @UserManager.GetUserName(User)</h4>
+
+<!-- Check whether the details for the current user exists in the database -->
+@if ((string)ViewData["ExistInDB"] == "true")
+{
+    <h5>Manage your info to make Blue Mountain Palace works better for you.</h5>
+}
+else
+{
+    <h5>Please complete your details below before browsing our services.</h5>
+}
+
+<hr />
+
+<!-- Web Form -->
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Myself.FirstName" class="control-label"></label>
+                <input asp-for="Myself.FirstName" class="form-control" />
+                <span asp-validation-for="Myself.FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Myself.LastName" class="control-label"></label>
+                <input asp-for="Myself.LastName" class="form-control" />
+                <span asp-validation-for="Myself.LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Myself.Postcode" class="control-label"></label>
+                <input asp-for="Myself.Postcode" class="form-control" />
+                <span asp-validation-for="Myself.Postcode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Submit" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Submission Complete -->
+@if (ViewData["SuccessDB"] != null)
+{
+    <hr />
+    <h5>
+        You have successfully updated your details as below:
+    </h5>
+    <h6>
+        Full Name: <strong>@Model.Myself.FullName</strong> <br />
+        Postcode: <strong>@Model.Myself.Postcode</strong>
+    </h6>
+}
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
